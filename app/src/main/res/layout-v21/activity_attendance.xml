@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".AttendanceActivity">
+
+        <ListView
+            android:id="@+id/attendance_listView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="15dp" />
+
+        <Button
+            android:id="@+id/selectFileBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/mainColorLightBlue"
+            android:text="+ SELECT" />
+
+        <EditText
+            android:id="@+id/email_EditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/mainColorLightBlue"
+            android:hint="EMAIL ID" />
+
+        <EditText
+            android:id="@+id/password_EditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/mainColorLightBlue"
+            android:hint="PASSWORD"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/subject_EditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/mainColorLightBlue"
+            android:hint="SUBJECT" />
+
+        <EditText
+            android:id="@+id/message_EditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/mainColorLightBlue"
+            android:hint="MESSAGE" />
+
+        <Button
+
+            android:id="@+id/sendEmailBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:backgroundTint="@color/mainColorLightBlue"
+            android:text="SEND" />
+
+        <TextView
+            android:id="@+id/display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>
