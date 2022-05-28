@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.inputmethodservice.Keyboard;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,9 +22,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,7 +55,7 @@ public class AttendanceActivity extends AppCompatActivity {
     private Button selectFileBtn, sendEmailBtn;
     private EditText subject_EditTxt, message_EditTxt, email_EditTxt, password_EditTxt;
     private ListView attendance_listView;
-    private TextView display;
+    private ProgressBar pb;
     private StudentAdapter studentAdapter;
 
     private List<String> EMAIL_ARRAY, NAME_ARRAY, PERCENTAGE_ARRAY, RESULT_EMAIL_ARRAY;
@@ -73,7 +76,8 @@ public class AttendanceActivity extends AppCompatActivity {
         attendance_listView = findViewById(R.id.attendance_listView);
         email_EditTxt = findViewById(R.id.email_EditTxt);
         password_EditTxt = findViewById(R.id.password_EditTxt);
-        display = findViewById(R.id.display);
+        pb = findViewById(R.id.pb);
+        pb.setVisibility(View.INVISIBLE);
 
         studentAdapter = new StudentAdapter(getApplicationContext(), new ArrayList<Students>());
         attendance_listView.setAdapter(studentAdapter);
@@ -101,13 +105,30 @@ public class AttendanceActivity extends AppCompatActivity {
                 }
                 if (raw_data_from_csv != null) {
                     extractingRawData();
+                    run();
+                    pb.setVisibility(View.VISIBLE);
+
+                }
+                if(selectFileBtn.getText() == "+ SELECT"){
+                    Toast.makeText(getApplicationContext(),"Please Select the file",Toast.LENGTH_SHORT).show();
                 }
                 dataPersistence();
-                run();
+                closeKeyBoard();
             }
         });
 
 
+    }
+
+
+
+    private void closeKeyBoard() {
+        View view = this.getCurrentFocus();
+        if (view !=null){
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+            imm.hideSoftInputFromWindow(view.getWindowToken(),0);
+        }
     }
 
     private void run() {
@@ -207,6 +228,7 @@ public class AttendanceActivity extends AppCompatActivity {
                 public void run() {
                     try {
                         Transport.send(message);
+                        pb.setVisibility(View.INVISIBLE);
                     } catch (MessagingException e) {
                         e.printStackTrace();
                     }
@@ -297,4 +319,9 @@ public class AttendanceActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
 }

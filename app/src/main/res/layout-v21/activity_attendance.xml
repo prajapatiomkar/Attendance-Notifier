@@ -69,10 +69,12 @@
             android:backgroundTint="@color/mainColorLightBlue"
             android:text="SEND" />
 
-        <TextView
-            android:id="@+id/display"
+        <ProgressBar
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/pb"
+            android:backgroundTint="@color/mainColorLightBlue"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 </ScrollView>

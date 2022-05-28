@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Development/Attendance Notifier/app/src/main/res/drawable/ic_launcher_background.xml" value="0.164" />
         <entry key="..\:/Development/Attendance Notifier/app/src/main/res/layout-v21/activity_attendance.xml" value="0.209375" />
         <entry key="..\:/Development/Attendance Notifier/app/src/main/res/layout/activity_attendance.xml" value="0.1953125" />
         <entry key="..\:/Development/Attendance Notifier/app/src/main/res/layout/activity_main.xml" value="0.2" />
